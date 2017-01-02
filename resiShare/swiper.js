@@ -54,4 +54,4 @@ var swiper = React.createClass({
   }
 })
 
-AppRegistry.registerComponent('myproject', () => swiper);
+// AppRegistry.registerComponent('myproject', () => swiper);
