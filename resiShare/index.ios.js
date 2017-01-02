@@ -16,6 +16,8 @@ import {
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
+import Divider from './divider.js';
+import Header from './header.js'
 
 
 export default class resiShare extends Component {
@@ -32,21 +34,6 @@ export default class resiShare extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
-      </View>
-    );
-  }
-}
-
-class Header extends Component {
-  render() {
-    return (
-      <View style = {{
-        flexDirection: 'row',
-        height : 20,
-        backgroundColor : '#deb887'}}>
-      <Text style = {{textAlign : 'center'}}>
-        Beats Headphones XASF13
-      </Text>
       </View>
     );
   }
@@ -85,22 +72,39 @@ const ImageStyles =
   image: {
     height : 200,
     width : 200
-  }
+  },
 
+  dotStyle : {
+    backgroundColor: 'rgba(0,0,0,.2)',
+    width: 5,
+    height: 5,
+    borderRadius: 4,
+    marginLeft: 3,
+    marginRight: 3,
+    marginTop: 3,
+    marginBottom: 3,
+    alignSelf : 'center',
+    alignItems : 'center'
+  },
+
+  // To change the layout of the dots in the 'Swiper' component
+  paginationStyle : {
+    bottom: -23,
+    left: null,
+    right: 10
+  }
 };
 
 class ImageViewerSwiper extends Component {
   render() {
     return (
-      <View style={{height : 320}}>
+      <View style={{height : 290, alignItems : 'center'}}>
         <Swiper height={275}
           onMomentumScrollEnd={(e, state, context) => console.log('index:', state.index)}
-          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          dot={<View style={ImageStyles.dotStyle} />}
           activeDot={<View style={{backgroundColor: '#000', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
           showsButtons = {true}
-          paginationStyle={{
-            bottom: -23, left: null, right: 10
-          }}>
+          >
           <View style={ImageStyles.slide}>
             <Image resizeMode='cover' style={ImageStyles.image}
               source={require('./beats.jpeg')} />
@@ -119,15 +123,26 @@ class ImageViewerSwiper extends Component {
   }
 }
 
+class ViewsComponent extends Component {
+  render() {
+    return (
+        <View style={{height : 15, flexDirection : 'row'}}>
+          <Image style={{height : 12, width : 12}}
+                 source={require('./popularity_indicator.jpg')}/>
+        </View>
+    );
+  }
+}
+
 class Rs extends Component {
   render() {
     return (
         <View style={{flex : 1, marginLeft : 5, marginRight : 5}}>
-        <View style={{height : 20, flexDirection : 'row'}} />
-        <Header />
+        <Divider />
+        <Header text = 'Beats Headphones XASF13'/>
         
         <ImageViewerSwiper/>
-        
+        <ViewsComponent />
         
         <Text>Rating 4.5 Stars </Text>
         <Text>Price $150   Condition Brand New   </Text>
