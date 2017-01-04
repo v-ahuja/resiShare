@@ -9,7 +9,7 @@ export default class Header extends Component {
   render() {
     return (
       <View style = {{
-      	alignItems : 'center',
+      	
         flexDirection: 'row',
         height : 20,
         backgroundColor : 'gainsboro'

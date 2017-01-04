@@ -126,14 +126,48 @@ class ImageViewerSwiper extends Component {
 class ViewsComponent extends Component {
   render() {
     return (
-        <View style={{height : 15, flexDirection : 'row'}}>
-          <Image style={{height : 12, width : 12}}
+        <View style={{height : 15,
+                      flexDirection : 'row',
+                      backgroundColor : 'gainsboro',
+                      }}>
+          
+          <Image style={{height : 14, width : 14, left : 5}}
                  source={require('./popularity_indicator.jpg')}/>
+          
+          <Text adjustsFontSizeToFit = {true}
+                style={{flex : 80, left : 16}}>
+            10 Views 5 today
+          </Text>
+          <View style = {{flex : 10 }}>
+            <Image style={{height : 15, width : 15}}
+                 source={require('./bookmark.png')}/>
+          </View>
         </View>
     );
   }
 }
 
+class PriceView extends View {
+  render() {
+    return (
+      <View style={{height : 20,
+                    flexDirection : 'row',
+                    backgroundColor : 'gainsboro',
+                    borderWidth : 0.5}}>
+        <Text 
+              fontWeight='bold' >
+            Price :
+        </Text>
+        <Text >
+              $120 or best offer
+        </Text>
+
+      </View>
+    );
+  }
+}
+
+// <Text>Price $150   Condition Brand New   </Text>
 class Rs extends Component {
   render() {
     return (
@@ -143,9 +177,10 @@ class Rs extends Component {
         
         <ImageViewerSwiper/>
         <ViewsComponent />
+        <Divider />
         
-        <Text>Rating 4.5 Stars </Text>
-        <Text>Price $150   Condition Brand New   </Text>
+        <PriceView />
+        
         <Text adjustsFontSizeToFit={true}>
         Description: Brand New Beats 2nd series. Rated 2nd on
         list of headphones for 2016. Noise cancellation,
