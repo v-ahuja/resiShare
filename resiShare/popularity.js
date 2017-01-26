@@ -6,6 +6,8 @@ import {
   Image
 } from 'react-native';
 
+import BookmarkComponent from './bookmark.js';
+
 export default class PopularityComponent extends Component {
   render() {
     return (
@@ -23,8 +25,7 @@ export default class PopularityComponent extends Component {
           10 Views 5 today
         </Text>
         <View style = {{flex : 10 }}>
-          <Image style={{height : 25, width : 25}}
-               source={require('./bookmark.png')}/>
+            <BookmarkComponent />
         </View>
       </View>
     );
