@@ -29,7 +29,8 @@ export default class BookmarkComponent extends Component {
 
     if (this.state.bookmarked) {
       return (
-        <TouchableHighlight onPress={this._onPressButton.bind(this)}>
+        <TouchableHighlight activeOpacity = {0.4} underlayColor = '#9db9ba'
+          onPress={this._onPressButton.bind(this)}>
           <Image style={{height : 20, width : 20}}
                source={require('./images/star_bookmark_icon.jpg')}/>
         </TouchableHighlight>
@@ -37,7 +38,7 @@ export default class BookmarkComponent extends Component {
     }
     else {
       return (
-        <TouchableHighlight onPress={this._onPressButton.bind(this)}>
+        <TouchableHighlight activeOpacity = {0.4} underlayColor = '#9db9ba' onPress={this._onPressButton.bind(this)}>
           <Image style={{height : 20, width : 20}}
                source={require('./images/star_bookmark_icon_transp.png')}/>
         </TouchableHighlight>

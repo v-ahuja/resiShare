@@ -19,6 +19,8 @@ import Swiper from 'react-native-swiper';
 import Divider from './divider.js';
 import Header, { AppHeader } from './header.js'
 import PopularityComponent from './popularity.js'
+import PriceView from './priceView.js'
+import OfferButton from './offerButton.js'
 
 export default class resiShare extends Component {
   render() {
@@ -123,25 +125,6 @@ class ImageViewerSwiper extends Component {
   }
 }
 
-class PriceView extends View {
-  render() {
-    return (
-      <View style={{height : 20,
-                    flexDirection : 'row',
-                    backgroundColor : 'gainsboro',
-                    borderWidth : 0.5}}>
-        <Text
-              fontWeight='bold' >
-            Price :
-        </Text>
-        <Text >
-              $120 or best offer
-        </Text>
-
-      </View>
-    );
-  }
-}
 
 // <Text>Price $150   Condition Brand New   </Text>
 class Rs extends Component {
@@ -159,6 +142,10 @@ class Rs extends Component {
           <Divider />
 
           <PriceView />
+
+          <Divider />
+
+          <OfferButton />
 
           <Text adjustsFontSizeToFit={true}>
           Description: Brand New Beats 2nd series. Rated 2nd on
