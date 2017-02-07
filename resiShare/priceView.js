@@ -9,10 +9,13 @@ import {
 export default class PriceView extends Component {
   render() {
     return (
-      <View style={{height : 50,
+      <View style={{flex : 1,
                     backgroundColor : '#afcecf',
                     borderWidth : 0.5,
                     }}>
+
+        <View style={{height : 4}} />
+
         <Text style = {{ fontSize : 20, flex : 1,
             left : 5
               }}
@@ -24,8 +27,9 @@ export default class PriceView extends Component {
                   {" $120 or best offer"}
             </Text>
         </Text>
-        <Text style = {{ fontSize : 13, flex : 0.8,
-                    left : 5     }}
+        <Text style = {{ fontSize : 13,
+                         flex : 0.8,
+                         left : 5 }}
                          fontWeight='bold' >
             Condition:
             <Text style = {{color : 'slategrey'}}
@@ -33,6 +37,8 @@ export default class PriceView extends Component {
               {" Lightly Used"}
             </Text>
         </Text>
+
+        <View style={{height : 3}} />
       </View>
     );
   }

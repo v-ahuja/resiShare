@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  Alert
 } from 'react-native';
 
 const onButtonPress = () => {
@@ -19,8 +20,8 @@ export default class OfferButton extends Component {
                     justifyContent : 'center'}}>
       <Button
         onPress={onButtonPress}
-        title="Learn More"
-        color="#841584"
+        title={this.props.text}
+        color={this.props.color}
         accessibilityLabel="Learn more about this purple button"
       />
       </View>

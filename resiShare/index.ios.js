@@ -21,6 +21,7 @@ import Header, { AppHeader } from './header.js'
 import PopularityComponent from './popularity.js'
 import PriceView from './priceView.js'
 import OfferButton from './offerButton.js'
+import Description from './description.js'
 
 export default class resiShare extends Component {
   render() {
@@ -109,15 +110,23 @@ class ImageViewerSwiper extends Component {
           >
           <View style={ImageStyles.slide}>
             <Image resizeMode='cover' style={ImageStyles.image}
-              source={require('./beats.jpeg')} />
+              source={require('./images/beats_1.jpg')} />
           </View>
           <View style={ImageStyles.slide}>
             <Image resizeMode='cover' style={ImageStyles.image}
-              source={require('./beats.jpeg')} />
+              source={require('./images/beats_2.jpg')} />
           </View>
           <View style={ImageStyles.slide}>
             <Image resizeMode='cover' style={ImageStyles.image}
-              source={require('./beats.jpeg')} />
+              source={require('./images/beats_3.jpg')} />
+          </View>
+          <View style={ImageStyles.slide}>
+            <Image resizeMode='cover' style={ImageStyles.image}
+              source={require('./images/beats_4.jpg')} />
+          </View>
+          <View style={ImageStyles.slide}>
+            <Image resizeMode='cover' style={ImageStyles.image}
+              source={require('./images/beats_5.jpg')} />
           </View>
         </Swiper>
       </View>
@@ -125,6 +134,9 @@ class ImageViewerSwiper extends Component {
   }
 }
 
+const description = "Brand New Beats 2nd series. Rated 2nd on" +
+" list of headphones for 2016. Noise cancellation," +
+" wireless with Bluetooth 3.0";
 
 // <Text>Price $150   Condition Brand New   </Text>
 class Rs extends Component {
@@ -132,7 +144,7 @@ class Rs extends Component {
     return (
         <View>
           <AppHeader/>
-          <View style={{flex : 1, marginLeft : 5, marginRight : 5}}>
+          <ScrollView style={{marginLeft : 5, marginRight : 5}}>
 
           <Divider />
           <Header text = 'Beats Headphones XASF13'/>
@@ -145,15 +157,19 @@ class Rs extends Component {
 
           <Divider />
 
-          <OfferButton />
+          <OfferButton text="Contact Seller" color="indigo" />
 
-          <Text adjustsFontSizeToFit={true}>
-          Description: Brand New Beats 2nd series. Rated 2nd on
-          list of headphones for 2016. Noise cancellation,
-          wireless with Bluetooth 3.0
-          </Text>
+          <Divider />
 
-          </View>
+          <OfferButton text="Make an Offer!" color="indigo" />
+
+          <Divider />
+
+          <Description text = {description}/>
+
+          <Divider />
+
+          </ScrollView>
         </View>
       );
   }

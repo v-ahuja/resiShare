@@ -17,7 +17,8 @@ export default class Header extends Component {
         height : 35,
         backgroundColor : '#afcecf'
       }}>
-      <Text style = {{flex : 1, alignSelf : 'center', textAlign : 'center'}}>{this.props.text}</Text>
+      <Text style = {{flex : 1, alignSelf : 'center',
+                      textAlign : 'center'}}>{this.props.text}</Text>
       </View>
     );
   }
