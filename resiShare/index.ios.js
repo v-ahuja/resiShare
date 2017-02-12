@@ -11,12 +11,13 @@ import {
 } from 'react-native';
 
 import Product from './product.js'
+import Services from './services.js'
 
-// <Text>Price $150   Condition Brand New   </Text>
+
 class Rs extends Component {
   render() {
     return (
-        <Product />
+        <Services />
       );
   }
 }
