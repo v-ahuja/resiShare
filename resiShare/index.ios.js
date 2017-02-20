@@ -12,12 +12,14 @@ import {
 
 import Product from './product.js'
 import Services from './services.js'
+import ProductsList from './productslist.js'
 
 
 class Rs extends Component {
   render() {
     return (
-        <Services />
+        // <Services />
+        <ProductsList />
       );
   }
 }
