@@ -10,16 +10,18 @@ import {
   StyleSheet
 } from 'react-native';
 
-import Product from './product.js'
-import Services from './services.js'
-import ProductsList from './productslist.js'
+import Product from './product.js';
+import Services from './services.js';
+import ProductsList from './productslist.js';
+import AddProduct from './addProduct.js';
 
 
 class Rs extends Component {
   render() {
     return (
         // <Services />
-        <ProductsList />
+        // <ProductsList />
+        <AddProduct />
       );
   }
 }
