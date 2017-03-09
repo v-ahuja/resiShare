@@ -91,7 +91,7 @@ export default class ProductsList extends Component {
       return (
         <Image source = {img}
                style = {{height : 30, width : 30}} />
-      )
+      );
   };
 
 

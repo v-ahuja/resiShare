@@ -7,7 +7,8 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet
+  StyleSheet,
+  Navigator
 } from 'react-native';
 
 import Product from './product.js';
@@ -15,13 +16,29 @@ import Services from './services.js';
 import ProductsList from './productslist.js';
 import AddProduct from './addProduct.js';
 
+const routes = [
+  {
+    title : 'Services',
+    renderFunc : (navigator) => <Services navigator={navigator} />
+  },
+  {
+    title : 'Marketplace',
+    renderFunc : (navigator) => <ProductsList navigator={navigator}/>
+  }
+]
 
 class Rs extends Component {
   render() {
     return (
-        // <Services />
+        <Navigator
+          initialRoute={routes[0]}
+
+          renderScene={(route, navigator) =>
+              route.renderFunc(navigator)
+            }
+        />
         // <ProductsList />
-        <AddProduct />
+        // <AddProduct />
       );
   }
 }
