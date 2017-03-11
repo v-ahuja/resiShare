@@ -18,7 +18,6 @@ export default class Product extends Component {
   render() {
     return (
       <View>
-        <AppHeader/>
         <ScrollView style={{marginLeft : 5, marginRight : 5}}>
 
         <Divider />

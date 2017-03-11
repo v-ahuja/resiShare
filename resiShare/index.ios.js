@@ -15,6 +15,7 @@ import Product from './product.js';
 import Services from './services.js';
 import ProductsList from './productslist.js';
 import AddProduct from './addProduct.js';
+import {StackNavigator} from 'react-navigation';
 
 const routes = [
   {
@@ -25,18 +26,53 @@ const routes = [
     title : 'Marketplace',
     renderFunc : (navigator) => <ProductsList navigator={navigator}/>
   }
-]
+];
+
+const stackNavigatorRoutes = {
+  Services : {
+    screen : Services,
+  },
+  ProductsList : {
+    screen : ProductsList
+  },
+  Product : {
+    screen : Product
+  }
+};
+
+const AppNavigator = StackNavigator({
+  ...stackNavigatorRoutes,
+},
+{
+    initialRouteName : 'Services',
+    navigationOptions : {
+        header : {
+          style : {
+            height : 60,
+            backgroundColor : 'cadetblue'
+          },
+          title : 'ResiShare'
+        }
+    }
+    // headerMode : 'none'
+},
+// {
+//   navigationOptions : {
+//       header : {
+//         style : {
+//           height : 60,
+//           backgroundColor : 'cadetblue'
+//         },
+//         title : 'ResiShare'
+//       }
+//   }
+// }
+)
 
 class Rs extends Component {
   render() {
     return (
-        <Navigator
-          initialRoute={routes[0]}
-
-          renderScene={(route, navigator) =>
-              route.renderFunc(navigator)
-            }
-        />
+        <AppNavigator />
         // <ProductsList />
         // <AddProduct />
       );

@@ -10,19 +10,15 @@ import {
 } from 'react-native';
 
 import Divider from './divider.js';
-import Header, { AppHeader } from './header.js'
 import ProductsList from './productslist.js'
 
 class Icon extends Component {
 
-  _onPressButton(navigator, text) {
-    console.log("navigator", navigator);
+  _onPressButton(navigation, text) {
+    console.log("navigation", navigation);
     console.log("text: ", text);
     if (text === 'Marketplace') {
-      navigator.push({
-        title : 'Marketplace',
-        renderFunc : (navigator) => <ProductsList navigator={navigator}/>
-      });
+      navigation.navigate('ProductsList');
     }
   }
 
@@ -30,7 +26,7 @@ class Icon extends Component {
     return (
       <View>
         <TouchableOpacity onPress={
-            this._onPressButton.bind(null, this.props.navigator,
+            this._onPressButton.bind(null, this.props.navigation,
                                      this.props.text)}>
           <Image source = {this.props.source}
                  style = {{height : 140, width : 140}} />
@@ -60,22 +56,22 @@ class ImageWithCaption extends Component {
 
         <Icon source = {require('./images/maintenance-icon.png')}
               text = 'Maintenance'
-              navigator={this.props.navigator}
+              navigation={this.props.navigation}
               renderFunc={() => false} />
 
         <Icon source = {require('./images/cash-icon.png')}
               text = 'Payments/Receipts'
-              navigator={this.props.navigator}
+              navigation={this.props.navigation}
               renderFunc={() => false} />
 
         <Icon source = {require('./images/marketplace-icon.png')}
               text = 'Marketplace'
-              navigator={this.props.navigator}
+              navigation={this.props.navigation}
               renderFunc={() => <ProductsList />}/>
 
         <Icon source = {require('./images/services-icon.png')}
               text = 'Services'
-              navigator={this.props.navigator}
+              navigation={this.props.navigation}
               renderFunc={() => false}/>
 
 
@@ -87,15 +83,15 @@ class ImageWithCaption extends Component {
 
 export default class Services extends Component {
   render() {
+    console.log("navigation Prop: ", this.props.navigation);
     return (
       <View style = {{flex : 1}}>
-        <AppHeader/>
 
         <ScrollView style={{marginLeft : 5, marginRight : 5}}>
 
         <Divider />
 
-        <ImageWithCaption navigator={this.props.navigator} />
+        <ImageWithCaption navigation={this.props.navigation} />
 
         <Divider />
 

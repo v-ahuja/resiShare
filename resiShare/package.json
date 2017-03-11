@@ -11,7 +11,8 @@
     "react-native": "^0.41.2",
     "react-native-image-crop-picker": "^0.12.4",
     "react-native-search-bar": "^3.0.0",
-    "react-native-swiper": "^1.5.4"
+    "react-native-swiper": "^1.5.4",
+    "react-navigation": "^1.0.0-beta.7"
   },
   "devDependencies": {
     "babel-jest": "18.0.0",

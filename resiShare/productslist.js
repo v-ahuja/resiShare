@@ -7,11 +7,12 @@ import {
   Text,
   Dimensions,
   ListView,
-  TabBarIOS
+  TabBarIOS,
+  TouchableOpacity
 } from 'react-native';
 
 import Divider from './divider.js';
-import Header, { AppHeader } from './header.js';
+import Product from './product.js';
 import SearchBar from 'react-native-search-bar';
 
 const staticData = [
@@ -51,19 +52,29 @@ const staticData = [
 ]
 
 class RowItem extends Component {
+
+  _onPressButton = () => {
+    this.props.navigation.navigate('Product');
+  }
+
   render() {
+    // console.log("navigator: ", this.props.navigator);
     return (
       <View style = {{flexDirection : 'row',
                       borderWidth  : 1,
                       borderColor : '#afcecf',
                       alignItems : 'center'}}>
 
-          <Image source = {this.props.source}
-                style = {{height : 120, width : 120}} />
+        <TouchableOpacity onPress={this._onPressButton}>
 
-          <Text style = {{ flex : 1 }} >
-            {this.props.text}
-          </Text>
+            <Image source = {this.props.source}
+                  style = {{height : 120, width : 120}} />
+
+        </TouchableOpacity>
+
+        <Text style = {{ flex : 1 }} >
+          {this.props.text}
+        </Text>
 
       </View>
     );
@@ -84,7 +95,7 @@ export default class ProductsList extends Component {
       dataSource: ds.cloneWithRows(staticData),
     };
 
-
+    // console.log("navigator: ", this.props.navigation);
   }
 
   _renderIcon = (img) => {
@@ -120,29 +131,26 @@ export default class ProductsList extends Component {
         onCancelButtonPress={() => this.refs.searchBar.unFocus()}/>
 
       <ListView
-                dataSource={this.state.dataSource}
-                renderRow={(rowData =>
-                    <RowItem source = {rowData.source}
-                             text = {rowData.text}/>
-                )}/>
-
+        dataSource={this.state.dataSource}
+        renderRow={(rowData =>
+            <RowItem source = {rowData.source}
+                     text = {rowData.text}
+                     navigation={this.props.navigation}/> )}
+      />
       </View>
-
     );
   };
 
   render() {
+
     return (
       <View style = {{flex : 1}}>
-        <AppHeader/>
         <Divider />
 
         <TabBarIOS
           unselectedTintColor="yellow"
           tintColor="black"
-          barTintColor='cadetblue'
-
-          >
+          barTintColor='cadetblue'>
 
         <TabBarIOS.Item
           icon = {require('./images/Buy_000000_25.png')}
