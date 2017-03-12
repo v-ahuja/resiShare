@@ -54,20 +54,7 @@ const AppNavigator = StackNavigator({
           title : 'ResiShare'
         }
     }
-    // headerMode : 'none'
-},
-// {
-//   navigationOptions : {
-//       header : {
-//         style : {
-//           height : 60,
-//           backgroundColor : 'cadetblue'
-//         },
-//         title : 'ResiShare'
-//       }
-//   }
-// }
-)
+});
 
 class Rs extends Component {
   render() {
