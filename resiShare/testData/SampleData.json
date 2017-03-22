@@ -1,0 +1,21 @@
+{
+  'collections' : {
+    '123' : {
+      
+      'name' : '333 East 54th Street',
+      'type' : 'Building',
+      'displayLabel' : null,
+      'collections' : [],
+    }
+  },
+  'collectionTypes' : [
+    {
+      'id' : 'Building Walk Up'
+    }
+  ],
+  'objectTypes' : [
+    {
+
+    }
+  ]
+}

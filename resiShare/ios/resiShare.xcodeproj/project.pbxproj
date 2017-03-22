@@ -38,10 +38,16 @@
 		3679582EADAF4BAD9C86A1CC /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C86B036494548A3234E13 /* libRNSearchBar.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		A9AA0BF5782336045C1EA8FB /* libPods-resiShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD32074EAA20801780EE519 /* libPods-resiShare.a */; };
+		ACC4FCFECF846CCC88A4E62D /* libPods-resiShareTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E0E39E866FF40D949D9940 /* libPods-resiShareTests.a */; };
+		BD6D4B201E7F377100505D1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD6D4B1F1E7F377100505D1C /* GoogleService-Info.plist */; };
 		BDAF4CB71E6B66C90070138B /* RSKImageCropper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAF4CB61E6B66C90070138B /* RSKImageCropper.framework */; };
 		BDAF4CB81E6B66C90070138B /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BDAF4CB61E6B66C90070138B /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BDAF4CBB1E6B66D50070138B /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAF4CBA1E6B66D50070138B /* QBImagePicker.framework */; };
 		BDAF4CBC1E6B66D50070138B /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BDAF4CBA1E6B66D50070138B /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C2A8592A953A4F9B9FACEC09 /* libFirestack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C2EC02AB684D5BBFB5B81C /* libFirestack.a */; };
+		DBF8D3E577BC8D0BA49408F2 /* libPods-resiShare-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70473AA472AA3140C9DC72B8 /* libPods-resiShare-tvOS.a */; };
+		EBB8A181FFA6ED23EAD98615 /* libPods-resiShare-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5390BB10A26D8DA108096AB2 /* libPods-resiShare-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,6 +247,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNSearchBar;
 		};
+		BD6D4B021E7F2CA700505D1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4AB1A00EF9D2499FA2A7E53D /* Firestack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = Firestack;
+		};
 		BDAF4C8F1E67D96A0070138B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2ADA7F9236024CBC893D102B /* imageCropPicker.xcodeproj */;
@@ -275,6 +288,7 @@
 		00E356EE1AD99517003FC87E /* resiShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = resiShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* resiShareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = resiShareTests.m; sourceTree = "<group>"; };
+		032234EAF99D31A0E318DB01 /* Pods-resiShareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resiShareTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-resiShareTests/Pods-resiShareTests.release.xcconfig"; sourceTree = "<group>"; };
 		11076E7B13024A618D4B9E55 /* libimageCropPicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libimageCropPicker.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -286,15 +300,29 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resiShare/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = resiShare/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		27A96FFC4B2A80B835B76EA5 /* Pods-resiShare-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resiShare-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-resiShare-tvOSTests/Pods-resiShare-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2ADA7F9236024CBC893D102B /* imageCropPicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = imageCropPicker.xcodeproj; path = "../node_modules/react-native-image-crop-picker/ios/imageCropPicker.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* resiShare-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "resiShare-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* resiShare-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "resiShare-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42315091C54F24A669890811 /* Pods-resiShareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resiShareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-resiShareTests/Pods-resiShareTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4AB1A00EF9D2499FA2A7E53D /* Firestack.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Firestack.xcodeproj; path = "../node_modules/react-native-firestack/ios/Firestack.xcodeproj"; sourceTree = "<group>"; };
+		5390BB10A26D8DA108096AB2 /* libPods-resiShare-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-resiShare-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		58E0E39E866FF40D949D9940 /* libPods-resiShareTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-resiShareTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		6B18C6F0E6AB4025735374A1 /* Pods-resiShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resiShare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-resiShare/Pods-resiShare.debug.xcconfig"; sourceTree = "<group>"; };
+		6E47EC36CC912389C8B81ED1 /* Pods-resiShare-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resiShare-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-resiShare-tvOS/Pods-resiShare-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		70473AA472AA3140C9DC72B8 /* libPods-resiShare-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-resiShare-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7F46268DCDAE5DFFA3531028 /* Pods-resiShare-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resiShare-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-resiShare-tvOSTests/Pods-resiShare-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		83C2EC02AB684D5BBFB5B81C /* libFirestack.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libFirestack.a; sourceTree = "<group>"; };
+		8BD32074EAA20801780EE519 /* libPods-resiShare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-resiShare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F15DF0FF8EA1DC495848E6B /* Pods-resiShare-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resiShare-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-resiShare-tvOS/Pods-resiShare-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		BD6D4B1F1E7F377100505D1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BDAF4CB61E6B66C90070138B /* RSKImageCropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDAF4CBA1E6B66D50070138B /* QBImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QBImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56C86B036494548A3234E13 /* libRNSearchBar.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSearchBar.a; sourceTree = "<group>"; };
+		E90269DB47A9597DAA8670F8 /* Pods-resiShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resiShare.release.xcconfig"; path = "Pods/Target Support Files/Pods-resiShare/Pods-resiShare.release.xcconfig"; sourceTree = "<group>"; };
 		F4609D60337A4F2182396D1B /* RNSearchBar.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSearchBar.xcodeproj; path = "../node_modules/react-native-search-bar/RNSearchBar.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				ACC4FCFECF846CCC88A4E62D /* libPods-resiShareTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +355,8 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				3679582EADAF4BAD9C86A1CC /* libRNSearchBar.a in Frameworks */,
 				15B6D1639C1D4C7EB074594B /* libimageCropPicker.a in Frameworks */,
+				A9AA0BF5782336045C1EA8FB /* libPods-resiShare.a in Frameworks */,
+				C2A8592A953A4F9B9FACEC09 /* libFirestack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +372,7 @@
 				2D02E4C61E0B4AEC006451C7 /* libRCTSettings-tvOS.a in Frameworks */,
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
+				DBF8D3E577BC8D0BA49408F2 /* libPods-resiShare-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB8A181FFA6ED23EAD98615 /* libPods-resiShare-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +493,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4C6EA824D10845E68BBBF9D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BD32074EAA20801780EE519 /* libPods-resiShare.a */,
+				70473AA472AA3140C9DC72B8 /* libPods-resiShare-tvOS.a */,
+				5390BB10A26D8DA108096AB2 /* libPods-resiShare-tvOSTests.a */,
+				58E0E39E866FF40D949D9940 /* libPods-resiShareTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +538,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				F4609D60337A4F2182396D1B /* RNSearchBar.xcodeproj */,
 				2ADA7F9236024CBC893D102B /* imageCropPicker.xcodeproj */,
+				4AB1A00EF9D2499FA2A7E53D /* Firestack.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -510,12 +555,15 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				BD6D4B1F1E7F377100505D1C /* GoogleService-Info.plist */,
 				BDAF4CBA1E6B66D50070138B /* QBImagePicker.framework */,
 				BDAF4CB61E6B66C90070138B /* RSKImageCropper.framework */,
 				13B07FAE1A68108700A75B9A /* resiShare */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* resiShareTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				D8DBDD0F366D35CFE7C7BA0D /* Pods */,
+				4C6EA824D10845E68BBBF9D5 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -540,12 +588,35 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BD6D4AFF1E7F2CA700505D1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD6D4B031E7F2CA700505D1C /* libFirestack.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BDAF4C8C1E67D96A0070138B /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				BDAF4C901E67D96A0070138B /* libimageCropPicker.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D8DBDD0F366D35CFE7C7BA0D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B18C6F0E6AB4025735374A1 /* Pods-resiShare.debug.xcconfig */,
+				E90269DB47A9597DAA8670F8 /* Pods-resiShare.release.xcconfig */,
+				8F15DF0FF8EA1DC495848E6B /* Pods-resiShare-tvOS.debug.xcconfig */,
+				6E47EC36CC912389C8B81ED1 /* Pods-resiShare-tvOS.release.xcconfig */,
+				7F46268DCDAE5DFFA3531028 /* Pods-resiShare-tvOSTests.debug.xcconfig */,
+				27A96FFC4B2A80B835B76EA5 /* Pods-resiShare-tvOSTests.release.xcconfig */,
+				42315091C54F24A669890811 /* Pods-resiShareTests.debug.xcconfig */,
+				032234EAF99D31A0E318DB01 /* Pods-resiShareTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -555,9 +626,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "resiShareTests" */;
 			buildPhases = (
+				3F62EB34C0BACB8C72BE4EC5 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				36AE604156206C57610EA0D5 /* [CP] Embed Pods Frameworks */,
+				E566CF87BF6470F4250D056B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -573,11 +647,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "resiShare" */;
 			buildPhases = (
+				224369FE1D8A80E72038DC81 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				BDAF4CB91E6B66CA0070138B /* Embed Frameworks */,
+				4D2D9F0766932346C3020468 /* [CP] Embed Pods Frameworks */,
+				C96D23B7780777F9B5B5CB8B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -592,10 +669,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "resiShare-tvOS" */;
 			buildPhases = (
+				C3A8C0068423AF8BD29202D5 /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
 				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
+				9A4DFB4A37E49A19CC05F327 /* [CP] Embed Pods Frameworks */,
+				18A8896EFC00F4FAB17151EC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -610,9 +690,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "resiShare-tvOSTests" */;
 			buildPhases = (
+				138B3262402BF8C2FE02D825 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
+				C24241EC30B6466996C6FF01 /* [CP] Embed Pods Frameworks */,
+				3ABA087CB7B884BFEBCDAF23 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -665,6 +748,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = BD6D4AFF1E7F2CA700505D1C /* Products */;
+					ProjectRef = 4AB1A00EF9D2499FA2A7E53D /* Firestack.xcodeproj */;
+				},
 				{
 					ProductGroup = BDAF4C8C1E67D96A0070138B /* Products */;
 					ProjectRef = 2ADA7F9236024CBC893D102B /* imageCropPicker.xcodeproj */;
@@ -911,6 +998,13 @@
 			remoteRef = BD00A6561E5C1165009B18A0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BD6D4B031E7F2CA700505D1C /* libFirestack.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFirestack.a;
+			remoteRef = BD6D4B021E7F2CA700505D1C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		BDAF4C901E67D96A0070138B /* libimageCropPicker.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -934,6 +1028,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				BD6D4B201E7F377100505D1C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,6 +1064,51 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
+		138B3262402BF8C2FE02D825 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		18A8896EFC00F4FAB17151EC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-resiShare-tvOS/Pods-resiShare-tvOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		224369FE1D8A80E72038DC81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -982,6 +1122,141 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
+		};
+		36AE604156206C57610EA0D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-resiShareTests/Pods-resiShareTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3ABA087CB7B884BFEBCDAF23 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-resiShare-tvOSTests/Pods-resiShare-tvOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F62EB34C0BACB8C72BE4EC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4D2D9F0766932346C3020468 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-resiShare/Pods-resiShare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A4DFB4A37E49A19CC05F327 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-resiShare-tvOS/Pods-resiShare-tvOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C24241EC30B6466996C6FF01 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-resiShare-tvOSTests/Pods-resiShare-tvOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3A8C0068423AF8BD29202D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C96D23B7780777F9B5B5CB8B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-resiShare/Pods-resiShare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E566CF87BF6470F4250D056B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-resiShareTests/Pods-resiShareTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1050,6 +1325,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42315091C54F24A669890811 /* Pods-resiShareTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 3UA26UCXJ2;
@@ -1062,6 +1338,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1077,6 +1354,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 032234EAF99D31A0E318DB01 /* Pods-resiShareTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -1086,6 +1364,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1101,6 +1380,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B18C6F0E6AB4025735374A1 /* Pods-resiShare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1122,6 +1402,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E90269DB47A9597DAA8670F8 /* Pods-resiShare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1142,6 +1423,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F15DF0FF8EA1DC495848E6B /* Pods-resiShare-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1157,6 +1439,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1174,6 +1457,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E47EC36CC912389C8B81ED1 /* Pods-resiShare-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1191,6 +1475,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1206,6 +1491,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F46268DCDAE5DFFA3531028 /* Pods-resiShare-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1221,6 +1507,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.resiShare-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1232,6 +1519,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27A96FFC4B2A80B835B76EA5 /* Pods-resiShare-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1245,6 +1533,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1349,7 +1638,7 @@
 				00E356F71AD99517003FC87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "resiShare" */ = {
 			isa = XCConfigurationList;
@@ -1358,7 +1647,7 @@
 				13B07F951A680F5B00A75B9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "resiShare-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1367,7 +1656,7 @@
 				2D02E4981E0B4A5E006451C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "resiShare-tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1376,7 +1665,7 @@
 				2D02E49A1E0B4A5E006451C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "resiShare" */ = {
 			isa = XCConfigurationList;
@@ -1385,7 +1674,7 @@
 				83CBBA211A601CBA00E9B192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
