@@ -7,7 +7,7 @@ import {
 
 import Firestack from 'react-native-firestack';
 
-const firestack = new Firestack();
+const dbRef = new Firestack().database;
 
 export default class Description extends Component {
   constructor() {
@@ -16,12 +16,22 @@ export default class Description extends Component {
       description : ""
     };
 
-    this.productRef = firestack.database.ref('products/beats');
+    this.productRef = dbRef.ref('products/beats');
 
-    reset = (des) => this.setState({description : des});
+    console.log('this.productRef: ', this.productRef);
+
+    const reset = (des) => this.setState({description : des});
+
     this.productRef.on('value', function(snapshot) {
+      console.log("snapshot val: ", snapshot.val());
       reset(snapshot.val().description);
     });
+  }
+
+  componentWillUnmount() {
+    // This will invalidate all callbacks for all events for this
+    // reference.
+    this.productRef.off();
   }
 
   render() {

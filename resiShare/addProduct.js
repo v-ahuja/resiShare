@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 import {
   StyleSheet,
   View,
@@ -12,7 +13,6 @@ import {
 } from 'react-native';
 
 import Divider from './divider.js';
-import Header, { AppHeader } from './header.js';
 import ImagePicker from 'react-native-image-crop-picker';
 
 class ImageComponent extends Component {
@@ -31,7 +31,8 @@ class ImageComponent extends Component {
   render() {
     if (!this.state.editMode) {
       return (
-        <TouchableOpacity onPress={this.toggleMode.bind(this, this.state.editMode)}>
+        <TouchableOpacity onPress={
+            this.toggleMode.bind(this, this.state.editMode)}>
           <Image
                  source={require('./images/edit_pencil_crop_icon.png')}
                  style ={{alignSelf : 'flex-end',
@@ -44,7 +45,8 @@ class ImageComponent extends Component {
     }
     else {
       return (
-        <TouchableOpacity onPress={this.toggleMode.bind(this, this.state.editMode)} >
+        <TouchableOpacity onPress={
+            this.toggleMode.bind(this, this.state.editMode)} >
           <Image
                  source={require('./images/checked_icon.png')}
                  style ={{alignSelf : 'flex-end',
@@ -148,6 +150,7 @@ export default class AddProduct extends Component {
       cropping: cropping,
       width: 500,
       height: 500,
+      smartAlbums : 'UserLibrary'
     }).then(image => {
       console.log('received image', image);
       this.setState({
@@ -161,8 +164,7 @@ export default class AddProduct extends Component {
   render() {
     return (
       <View style = {{flex : 1}}>
-        <AppHeader/>
-        <Divider />
+
 
         <ScrollView style={{/*flex : 1,*/
                       marginLeft : 5,
@@ -187,6 +189,8 @@ export default class AddProduct extends Component {
           color="#841584"
           accessibilityLabel="Add Photos/Images"
         />
+
+        <KeyboardSpacer/>
 
         </ScrollView>
 

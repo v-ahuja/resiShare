@@ -7,6 +7,7 @@ import {
   Text,
   Dimensions,
   ListView,
+  Button,
   TabBarIOS,
   TouchableOpacity
 } from 'react-native';
@@ -82,7 +83,6 @@ class RowItem extends Component {
 }
 
 
-
 export default class ProductsList extends Component {
   constructor() {
     super();
@@ -95,6 +95,9 @@ export default class ProductsList extends Component {
       dataSource: ds.cloneWithRows(staticData),
     };
 
+    this._onPressBuyButton = () => {
+      this.props.navigation.navigate('AddProduct');
+    }
     // console.log("navigator: ", this.props.navigation);
   }
 
@@ -115,6 +118,13 @@ export default class ProductsList extends Component {
 
           onSearchButtonPress={() => this.refs.searchBar.unFocus()}
           onCancelButtonPress={() => this.refs.searchBar.unFocus()}/>
+
+        <Button
+          onPress={this._onPressBuyButton}
+          title="Add Product"
+          accessibilityLabel="See an informative alert"
+        />
+
       </View>
     );
   };

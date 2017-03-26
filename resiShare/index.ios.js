@@ -37,6 +37,9 @@ const stackNavigatorRoutes = {
   },
   Product : {
     screen : Product
+  },
+  AddProduct : {
+    screen : AddProduct
   }
 };
 
