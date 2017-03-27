@@ -1,21 +1,55 @@
 {
-  'collections' : {
+  'localities' : {
     '123' : {
-      
       'name' : '333 East 54th Street',
       'type' : 'Building',
-      'displayLabel' : null,
-      'collections' : [],
-    }
-  },
-  'collectionTypes' : [
-    {
-      'id' : 'Building Walk Up'
-    }
-  ],
-  'objectTypes' : [
-    {
+      'properties' : {
+        'numApartments' : 50,
+        'description' : null,
+      }
+      'members' : {
+        'ashbenson' : {
+          'name' : 'Ashley Benson',
+          'apt' : '1A',
+          'products' : {
+            
+          }
+        },
+        'amodakai' : {
+          'name' : 'Asha Modakai',
+          'apt' : '4B'
+        },
+        'spaul' : {
+          'name' : 'Serene Paul',
+          'apt' : null
+        },
+        'sgrant' : {
+          'name' : 'Scott Grant',
+          'apt' : '3A'
+        }
+      },
+      'roles' : {
+        'tenants' : {
+          'members' : {
+            'ashbenson' : true,
+            'amodakai' : true
+          },
+          'privileges' : {
+            'reserveAmenities' : true
+          }
+        },
+        'super' : {
+          'members' : {
+            'sgrant' : true
+          },
+          'privileges' : {
+            'sendNotifications' : true,
+            'accessMaintenanceTickets' : true
+          }
+        }
+      },
 
     }
-  ]
+  },
+
 }
