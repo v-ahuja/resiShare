@@ -1,55 +1,68 @@
 {
-  'localities' : {
-    '123' : {
-      'name' : '333 East 54th Street',
-      'type' : 'Building',
-      'properties' : {
-        'numApartments' : 50,
-        'description' : null,
+  "localities" : {
+    "123" : {
+      "name" : "333 East 54th Street",
+      "cloudFolder" : "333E54ST",
+      "type" : "Building",
+      "properties" : {
+        "numApartments" : 50,
+        "description" : "Walk-up"
+      },
+      "products" : {
+        "beats" : {
+          "name" : "Beats XLX 50 Red",
+          "description" : "Quiet Comfort 35 wireless headphones are engineered with world-class noise cancellation that makes quiet sound quieter.",
+          "mainDisplayURL" : "333E54ST/products/beats/images/beats_1.jpg",
+          "productImageURLs" : {
+            "beats_1" : "333E54ST/products/beats/images/beats_1.jpg",
+            "beats_2" : "333E54ST/products/beats/images/beats_2.jpg",
+            "beats_3" : "333E54ST/products/beats/images/beats_3.jpg",
+            "beats_4" : "333E54ST/products/beats/images/beats_4.jpg",
+            "beats_5" : "333E54ST/products/beats/images/beats_5.jpg"
+          }
+        }
+      },
+      "members" : {
+        "ashbenson" : {
+          "name" : "Ashley Benson",
+          "apt" : "1A",
+          "products" : {
+            "beats" : true
+          }
+        },
+        "amodakai" : {
+          "name" : "Asha Modakai",
+          "apt" : "4B"
+        },
+        "spaul" : {
+          "name" : "Serene Paul",
+          "apt" : null
+        },
+        "sgrant" : {
+          "name" : "Scott Grant",
+          "apt" : "3A"
+        }
+      },
+      "roles" : {
+        "tenants" : {
+          "members" : {
+            "ashbenson" : true,
+            "amodakai" : true
+          },
+          "privileges" : {
+            "reserveAmenities" : true
+          }
+        },
+        "super" : {
+          "members" : {
+            "sgrant" : true
+          },
+          "privileges" : {
+            "sendNotifications" : true,
+            "accessMaintenanceTickets" : true
+          }
+        }
       }
-      'members' : {
-        'ashbenson' : {
-          'name' : 'Ashley Benson',
-          'apt' : '1A',
-          'products' : {
-            
-          }
-        },
-        'amodakai' : {
-          'name' : 'Asha Modakai',
-          'apt' : '4B'
-        },
-        'spaul' : {
-          'name' : 'Serene Paul',
-          'apt' : null
-        },
-        'sgrant' : {
-          'name' : 'Scott Grant',
-          'apt' : '3A'
-        }
-      },
-      'roles' : {
-        'tenants' : {
-          'members' : {
-            'ashbenson' : true,
-            'amodakai' : true
-          },
-          'privileges' : {
-            'reserveAmenities' : true
-          }
-        },
-        'super' : {
-          'members' : {
-            'sgrant' : true
-          },
-          'privileges' : {
-            'sendNotifications' : true,
-            'accessMaintenanceTickets' : true
-          }
-        }
-      },
-
     }
-  },
-
+  }
 }

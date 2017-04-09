@@ -8,12 +8,31 @@ import {
   Text,
   TextInput,
   Button,
+  Alert,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   Keyboard
 } from 'react-native';
 
+import { Isao } from 'react-native-textinput-effects';
+
 import Divider from './divider.js';
+import ImageList from './multiImageView.js'
 import ImagePicker from 'react-native-image-crop-picker';
+
+import { NavigationActions } from 'react-navigation';
+
+const staticImages = [
+  // {
+  //   source : './images/beats_1.jpg',
+  // },
+  // {
+  //   source : './images/wooden_table.jpg',
+  // },
+  // {
+  //   source : './images/oxo_sugar_dispenser.jpg',
+  // },
+];
 
 class ImageComponent extends Component {
   constructor(props) {
@@ -143,19 +162,61 @@ class TitleText extends Component {
 export default class AddProduct extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      images : staticImages
+    };
   }
+
+  updateTitle = (text) => {
+    this.title = text;
+    console.log("Title updated: ", this.title);
+  };
+
+
+  getTitle = () => {return this.title;};
+
+  updateDescription = (text) => this.description = text;
+  getDescription = () => {return this.description;};
+
+  static navigationOptions = {
+    header : ({state, setParams}) => {
+      console.log("State: ", state);
+      return {
+        right : (
+          <Button
+            title="Add Product"
+            onPress={() => Alert.alert("save pressed")}
+          />
+        )
+      };
+    }
+  };
+
+  componentDidMount() {
+
+  }
+
 
   pickSingleWithCamera(cropping) {
     ImagePicker.openCamera({
       cropping: cropping,
       width: 500,
       height: 500,
+      multiple : true,
       smartAlbums : 'UserLibrary'
     }).then(image => {
       console.log('received image', image);
+      // this.setState({
+      //   image: {uri: image.path, width: image.width, height: image.height},
+      //   images: null
+      // });
+      const newImage = {
+        source : image.path
+      };
+      const newImageSet = this.state.images.concat(newImage);
+      console.log("newImageSet", newImageSet);
       this.setState({
-        image: {uri: image.path, width: image.width, height: image.height},
-        images: null
+        images : newImageSet
       });
     }).catch(e => alert(e));
   }
@@ -163,6 +224,7 @@ export default class AddProduct extends Component {
 
   render() {
     return (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style = {{flex : 1}}>
 
 
@@ -171,30 +233,64 @@ export default class AddProduct extends Component {
                       marginRight : 5
                     }}>
 
-        <TitleText titleText="Title:" height={80} maxLength={80}/>
+          <Isao
+              label={'Title'}
+              // this is applied as active border and label color
+              activeColor={'#da7071'}
+              // this is applied as passive border and label color
+              passiveColor={'#dadada'}
 
-        <Divider />
+              height={80} maxLength={80}
 
-        <TitleText titleText="Description:" height={180} maxLength={400}/>
+              onChangeText={this.updateTitle}
+            />
 
-        <Divider />
+          <Divider />
 
-        <TitleText titleText="Price:" height={60} maxLength={50} />
+          <Isao
+              label={'Description'}
+              // this is applied as active border and label color
+              activeColor={'#da7071'}
+              // this is applied as passive border and label color
+              passiveColor={'#dadada'}
 
-        <Divider />
+              multiline={true}
+            height={180} maxLength={400}
 
-        <Button
-          onPress={this.pickSingleWithCamera.bind(this,true)}
-          title="Add Photos/Images"
-          color="#841584"
-          accessibilityLabel="Add Photos/Images"
-        />
+            onEndEditing={this.updateDescription}
+          />
 
-        <KeyboardSpacer/>
+          <Divider />
 
+          <Isao
+              label={'Price'}
+              // this is applied as active border and label color
+              activeColor={'#da7071'}
+              // this is applied as passive border and label color
+              passiveColor={'#dadada'}
+
+              height={80} maxLength={80}
+
+              onChangeText={this.updateTitle}
+            />
+
+          <Divider />
+
+          <Button
+            onPress={this.pickSingleWithCamera.bind(this,true)}
+            title="Add Photos/Images"
+            color="#841584"
+            accessibilityLabel="Add Photos/Images"
+          />
+
+          <ImageList images={this.state.images} />
+
+          <Divider />
+
+          <KeyboardSpacer/>
         </ScrollView>
-
       </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

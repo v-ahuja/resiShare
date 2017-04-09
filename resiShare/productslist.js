@@ -14,7 +14,9 @@ import {
 
 import Divider from './divider.js';
 import Product from './product.js';
+import DBAccess from './firestack.js';
 import SearchBar from 'react-native-search-bar';
+
 
 const staticData = [
   {
@@ -87,17 +89,56 @@ export default class ProductsList extends Component {
   constructor() {
     super();
 
+    this.storageRef = DBAccess.getCloudRef(
+      "333E54ST/products/beats/images/");
+    this.storageRef.downloadUrl()
+    .then((res => {
+      console.log("Cloud storage result: ", res);
+      // res is an object that contains
+      // the `url` as well as the path to the file in `path`
+    }),
+    (err) => console.log("Error retrieving cloud data: ", err));
+
     const ds = new ListView.DataSource(
                 {rowHasChanged: (r1, r2) => r1 !== r2});
 
+    this.products = [];
+
     this.state = {
       selectedTab : 'buyTab',
-      dataSource: ds.cloneWithRows(staticData),
+      dataSource: ds.cloneWithRows(this.products),
     };
 
     this._onPressBuyButton = () => {
+      console.log("Navigating to Add Product");
       this.props.navigation.navigate('AddProduct');
     }
+
+    this._updateMainProductInfo = function (products) {
+      console.log("products from firebase db: ", products);
+      function updateState(name, urlObj) {
+        console.log("url from storage: ", urlObj);
+        this.products = this.products.concat({
+          name : name,
+          source : urlObj.url
+        });
+
+        this.setState({
+          dataSource: ds.cloneWithRows(this.products)
+        });
+      }
+
+      products.forEach(product => {
+          console.log("product from db: ", product);
+          const storageRef = DBAccess.getCloudRef(product.mainDisplayURL);
+          storageRef.downloadUrl()
+                    .then(updateState.bind(this, product.name))
+                    .catch((error) => console.error("Error getting downloadUrl: ", error));
+      });
+    };
+
+    DBAccess.getAllProductsForLocality("123").then(
+      this._updateMainProductInfo.bind(this) );
     // console.log("navigator: ", this.props.navigation);
   }
 
@@ -143,8 +184,8 @@ export default class ProductsList extends Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={(rowData =>
-            <RowItem source = {rowData.source}
-                     text = {rowData.text}
+            <RowItem source = {{uri : rowData.source}}
+                     text = {rowData.name}
                      navigation={this.props.navigation}/> )}
       />
       </View>
