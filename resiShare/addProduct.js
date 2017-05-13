@@ -178,19 +178,28 @@ export default class AddProduct extends Component {
   updateDescription = (text) => this.description = text;
   getDescription = () => {return this.description;};
 
-  static navigationOptions = {
-    header : ({state, setParams}) => {
-      console.log("State: ", state);
-      return {
-        right : (
-          <Button
-            title="Add Product"
-            onPress={() => Alert.alert("save pressed")}
-          />
-        )
-      };
-    }
-  };
+  // static navigationOptions = {
+  //   header : ({state, setParams}) => {
+  //     console.log("State: ", state);
+  //     return {
+  //       right : (
+  //         <Button
+  //           title="Add Product"
+  //           onPress={() => Alert.alert("save pressed")}
+  //         />
+  //       )
+  //     };
+  //   }
+  // };
+
+  static navigationOptions = ({ navigation, screenProps }) => ({
+    headerRight: (
+      <Button
+        title="Add Product"
+        onPress={() => Alert.alert("save pressed")}
+      />
+    ),
+  });
 
   componentDidMount() {
 

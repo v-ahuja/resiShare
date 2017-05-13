@@ -49,13 +49,12 @@ const AppNavigator = StackNavigator({
 {
     initialRouteName : 'Services',
     navigationOptions : {
-        header : {
-          style : {
-            height : 60,
-            backgroundColor : 'cadetblue'
-          },
-          title : 'ResiShare'
-        }
+      headerTitle : 'ResiShare',
+      headerStyle : {
+        height : 60,
+        backgroundColor : 'cadetblue'
+      },
+
     }
 });
 
