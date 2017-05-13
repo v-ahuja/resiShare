@@ -57,7 +57,10 @@ const staticData = [
 class RowItem extends Component {
 
   _onPressButton = () => {
-    this.props.navigation.navigate('Product');
+    console.log("Product Info in Row Item to be passed down: ",
+                this.props.productInfo);
+    this.props.navigation.navigate('Product',
+      this.props.productInfo);
   }
 
   render() {
@@ -76,7 +79,7 @@ class RowItem extends Component {
         </TouchableOpacity>
 
         <Text style = {{ flex : 1 }} >
-          {this.props.text}
+          {this.props.productInfo.name}
         </Text>
 
       </View>
@@ -88,16 +91,6 @@ class RowItem extends Component {
 export default class ProductsList extends Component {
   constructor() {
     super();
-
-    this.storageRef = DBAccess.getCloudRef(
-      "333E54ST/products/beats/images/");
-    this.storageRef.downloadUrl()
-    .then((res => {
-      console.log("Cloud storage result: ", res);
-      // res is an object that contains
-      // the `url` as well as the path to the file in `path`
-    }),
-    (err) => console.log("Error retrieving cloud data: ", err));
 
     const ds = new ListView.DataSource(
                 {rowHasChanged: (r1, r2) => r1 !== r2});
@@ -116,11 +109,12 @@ export default class ProductsList extends Component {
 
     this._updateMainProductInfo = function (products) {
       console.log("products from firebase db: ", products);
-      function updateState(name, urlObj) {
+
+      function updateState(product, urlObj) {
         console.log("url from storage: ", urlObj);
         this.products = this.products.concat({
-          name : name,
-          source : urlObj.url
+          product : product,
+          source : urlObj.url,
         });
 
         this.setState({
@@ -132,7 +126,7 @@ export default class ProductsList extends Component {
           console.log("product from db: ", product);
           const storageRef = DBAccess.getCloudRef(product.mainDisplayURL);
           storageRef.downloadUrl()
-                    .then(updateState.bind(this, product.name))
+                    .then(updateState.bind(this, product))
                     .catch((error) => console.error("Error getting downloadUrl: ", error));
       });
     };
@@ -185,7 +179,7 @@ export default class ProductsList extends Component {
         dataSource={this.state.dataSource}
         renderRow={(rowData =>
             <RowItem source = {{uri : rowData.source}}
-                     text = {rowData.name}
+                     productInfo = {rowData.product}
                      navigation={this.props.navigation}/> )}
       />
       </View>

@@ -16,12 +16,14 @@ import ImageViewerSwiper from './imageviewerswiper.js'
 
 export default class Product extends Component {
   render() {
+    const navigationParams = this.props.navigation.state.params;
+    console.log("Product Info in Product Component: ", navigationParams);
     return (
       <View>
         <ScrollView style={{marginLeft : 5, marginRight : 5}}>
 
         <Divider />
-        <Header text = 'Beats Headphones XASF13'/>
+        <Header text = {navigationParams.name} />
 
         <ImageViewerSwiper/>
 
@@ -41,7 +43,7 @@ export default class Product extends Component {
 
         <Divider />
 
-        <Description />
+        <Description description = {navigationParams.description} />
 
         <Divider />
 

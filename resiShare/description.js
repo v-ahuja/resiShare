@@ -5,35 +5,7 @@ import {
   View
 } from 'react-native';
 
-import Firestack from 'react-native-firestack';
-
-const dbRef = new Firestack().database;
-
 export default class Description extends Component {
-  constructor() {
-    super();
-    this.state = {
-      description : ""
-    };
-
-    this.productRef = dbRef.ref('products/beats');
-
-    console.log('this.productRef: ', this.productRef);
-
-    const reset = (des) => this.setState({description : des});
-
-    this.productRef.on('value', function(snapshot) {
-      console.log("snapshot val: ", snapshot.val());
-      reset(snapshot.val().description);
-    });
-  }
-
-  componentWillUnmount() {
-    // This will invalidate all callbacks for all events for this
-    // reference.
-    this.productRef.off();
-  }
-
   render() {
     return (
       <View style = {{
@@ -61,20 +33,7 @@ export default class Description extends Component {
                         margin : 10,
                         lineHeight : 25,
                         alignSelf : 'center'}}>
-{ this.state.description
-  /*"Quiet Comfort 35 wireless headphones are engineered with " +
- "world-class noise cancellation that makes quiet sound quieter " +
- "and music sound better. Free yourself from wires and connect " +
- "easily to your devices with Bluetooth and NFC pairing. " +
- "Volume-optimized EQ gives you balanced audio performance " +
- "at any volume, while a noise-rejecting dual microphone provides " +
- "clear calls, even in windy or noisy environments. " +
- "Voice prompts and intuitive controls make communicating and" +
- "controlling your music hassle-free. A lithium-ion battery gives" +
- " you up to 20 hours of wireless play time per charge. And if you" +
- " anticipate a situation where charging may not be possible, just" +
- " plug in the included audio cable. Wired mode gives you up to 40" +
- " hours of play time per charge. Premium materials make these headphones lightweight and comfortable for all-day listening. Use the Bose Connect app for a more personalized experience. Included: Quiet Comfort 35 wireless headphones; USB charging cable; backup audio cable; airline adapter; carry case." */}
+          {this.props.description}
         </Text>
 
       </View>
