@@ -176,6 +176,7 @@ export default class ProductsList extends Component {
         onCancelButtonPress={() => this.refs.searchBar.unFocus()}/>
 
       <ListView
+        enableEmptySections = {true}
         dataSource={this.state.dataSource}
         renderRow={(rowData =>
             <RowItem source = {{uri : rowData.source}}
