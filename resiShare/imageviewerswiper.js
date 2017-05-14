@@ -75,7 +75,7 @@ export default class ImageViewerSwiper extends Component {
           showsButtons = {true}
           >
           {
-            this.state.imageURIs.map((imgURI) => <View style={ImageStyles.slide}>
+            this.state.imageURIs.map((imgURI, i) => <View key={i} style={ImageStyles.slide}>
               <Image resizeMode='cover' style={ImageStyles.image}
                 source={{uri : imgURI}} />
             </View> )
