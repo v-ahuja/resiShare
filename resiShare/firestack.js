@@ -28,7 +28,20 @@ export default class DBAccess {
         console.log("childSnapshot from db: ", childSnapshot);
         console.log("childSnapshot val from db: ", childSnapshot.value);
 
-        products.push(childSnapshot.value);
+        let childSnapshotValue = childSnapshot.value;
+
+        const productImageURLs = childSnapshotValue.productImageURLs;
+
+        console.log("productImageURLs: ", productImageURLs);
+
+        childSnapshotValue.productImageURLs =
+          Object.keys(productImageURLs).map(
+            (imgKey) => productImageURLs[imgKey]
+          );
+
+        console.log("After transforming childSnapshotValue: ", childSnapshotValue);
+
+        products.push(childSnapshotValue);
       });
 
       console.log("Products after population: ", products);
@@ -43,6 +56,14 @@ export default class DBAccess {
          console.log("Error retrieving from db");
          return [];
        });
+  }
+
+  static getImageFromPath(imgPath) {
+    console.log("imgPath: ", imgPath);
+    const refFromPath = DBAccess.getCloudRef(imgPath);
+    console.log("refFromPath: ", refFromPath);
+    console.log("full path: ", refFromPath.fullPath);
+    return refFromPath.downloadUrl();
   }
 
 };

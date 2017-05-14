@@ -25,7 +25,7 @@ export default class Product extends Component {
         <Divider />
         <Header text = {navigationParams.name} />
 
-        <ImageViewerSwiper/>
+        <ImageViewerSwiper imagePaths = {navigationParams.productImageURLs} />
 
         <PopularityComponent views = {navigationParams.views}/>
 

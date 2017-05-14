@@ -6,6 +6,7 @@ import {
   Image
 } from 'react-native';
 
+import DBAccess from './firestack.js';
 import Swiper from 'react-native-swiper';
 
 const ImageStyles =
@@ -44,7 +45,27 @@ const ImageStyles =
 };
 
 export default class ImageViewerSwiper extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      imageURIs : []
+    };
+
+    this.retrieveImage = (imgPath) => {
+        DBAccess.getImageFromPath(imgPath).then(
+          (uri) => this.setState({
+            imageURIs : this.state.imageURIs.concat(uri.url)
+          })
+        ).catch((err) => consle.log(err));
+    };
+
+    console.log("imagePaths: ", this.props);
+    this.props.imagePaths.forEach(this.retrieveImage);
+  }
+
   render() {
+
     return (
       <View style={{height : 290, alignItems : 'center'}}>
         <Swiper height={275}
@@ -53,26 +74,33 @@ export default class ImageViewerSwiper extends Component {
           activeDot={<View style={{backgroundColor: '#000', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
           showsButtons = {true}
           >
+          {
+            this.state.imageURIs.map((imgURI) => <View style={ImageStyles.slide}>
+              <Image resizeMode='cover' style={ImageStyles.image}
+                source={{uri : imgURI}} />
+            </View> )
+          }
+          {/*[
           <View style={ImageStyles.slide}>
             <Image resizeMode='cover' style={ImageStyles.image}
               source={require('./images/beats_1.jpg')} />
-          </View>
+          </View>,
           <View style={ImageStyles.slide}>
             <Image resizeMode='cover' style={ImageStyles.image}
               source={require('./images/beats_2.jpg')} />
-          </View>
+          </View>,
           <View style={ImageStyles.slide}>
             <Image resizeMode='cover' style={ImageStyles.image}
               source={require('./images/beats_3.jpg')} />
-          </View>
+          </View>,
           <View style={ImageStyles.slide}>
             <Image resizeMode='cover' style={ImageStyles.image}
               source={require('./images/beats_4.jpg')} />
-          </View>
+          </View>,
           <View style={ImageStyles.slide}>
             <Image resizeMode='cover' style={ImageStyles.image}
               source={require('./images/beats_5.jpg')} />
-          </View>
+          </View> ]*/}
         </Swiper>
       </View>
     );
