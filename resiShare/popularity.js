@@ -8,6 +8,10 @@ import {
 
 import BookmarkComponent from './bookmark.js';
 
+function helper_getViews(numViews) {
+  return numViews ? numViews : 0;
+}
+
 export default class PopularityComponent extends Component {
   render() {
     return (
@@ -22,7 +26,7 @@ export default class PopularityComponent extends Component {
 
         <Text adjustsFontSizeToFit = {true}
               style={{flex : 80, left : 16}}>
-          10 Views 5 today
+          {`${helper_getViews(this.props.views)} Views`}
         </Text>
         <View style = {{flex : 10 }}>
             <BookmarkComponent />

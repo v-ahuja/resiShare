@@ -19,7 +19,12 @@
             "beats_3" : "333E54ST/products/beats/images/beats_3.jpg",
             "beats_4" : "333E54ST/products/beats/images/beats_4.jpg",
             "beats_5" : "333E54ST/products/beats/images/beats_5.jpg"
-          }
+          },
+          "price" : "125",
+          "currency" : "$",
+          "bestOffer" : true,
+          "condition" : "light",
+          "views" : 12
         }
       },
       "members" : {

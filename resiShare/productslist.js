@@ -204,7 +204,7 @@ export default class ProductsList extends Component {
           selected={this.state.selectedTab === 'buyTab'}
           onPress={() => {
             const ds = new ListView.DataSource(
-                        {rowHasChanged: (r1, r2) => r1 !== r2});
+              {rowHasChanged: (r1, r2) => r1 !== r2});
 
             this.setState({
               selectedTab: 'buyTab',

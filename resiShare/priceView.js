@@ -5,6 +5,26 @@ import {
   View
 } from 'react-native';
 
+const ConditionToStringMap = {
+  "light" : "Lightly Used",
+  "medium" : "Medium Use",
+  "heavy" : "Heavily Used",
+  "like new" : "Like New",
+  "unused" : "Completely unused"
+};
+
+function helper_getPriceLine(currency, price, bestOffer)
+{
+  let getBestOfferSuffix = () => {
+    if (bestOffer) return " or best offer";
+    return "";
+  }
+  return ` ${currency}${price}${getBestOfferSuffix()}`;
+}
+
+function helper_getCondition(condition) {
+  return condition ? ConditionToStringMap[condition] : "Not provided";
+}
 
 export default class PriceView extends Component {
   render() {
@@ -16,15 +36,17 @@ export default class PriceView extends Component {
 
         <View style={{height : 4}} />
 
-        <Text style = {{ fontSize : 20, flex : 1,
-            left : 5
-              }}
+        <Text style = {{fontSize : 20,
+                        flex : 1,
+                        left : 5
+                      }}
               fontWeight='bold' >
             Price:
             <Text style = {{color : 'crimson',
                             fontSize : 20}}
                   fontWeight='bold'>
-                  {" $120 or best offer"}
+                  {helper_getPriceLine(this.props.currency,
+                    this.props.price, this.props.bestOffer)}
             </Text>
         </Text>
         <Text style = {{ fontSize : 13,
@@ -34,7 +56,7 @@ export default class PriceView extends Component {
             Condition:
             <Text style = {{color : 'slategrey'}}
                             fontWeight = 'bold'>
-              {" Lightly Used"}
+              {` ${helper_getCondition(this.props.condition)}`}
             </Text>
         </Text>
 

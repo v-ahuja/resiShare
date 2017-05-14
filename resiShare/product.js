@@ -27,12 +27,14 @@ export default class Product extends Component {
 
         <ImageViewerSwiper/>
 
-        <PopularityComponent />
+        <PopularityComponent views = {navigationParams.views}/>
 
         <Divider />
 
-        <PriceView />
-
+        <PriceView price = {navigationParams.price}
+                   currency = {navigationParams.currency}
+                   bestOffer = {navigationParams.bestOffer}
+                   condition = {navigationParams.condition}/>
         <Divider />
 
         <OfferButton text="Contact Seller" color="indigo" />
