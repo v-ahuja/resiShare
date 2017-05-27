@@ -12,6 +12,8 @@ target 'resiShare' do
   pod 'Firebase/Database'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
+  pod 'Fabric'
+  pod 'Crashlytics'
 
   target 'resiShareTests' do
     inherit! :search_paths

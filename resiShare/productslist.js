@@ -104,7 +104,8 @@ export default class ProductsList extends Component {
 
     this._onPressBuyButton = () => {
       console.log("Navigating to Add Product");
-      this.props.navigation.navigate('AddProduct');
+      // this.props.navigation.navigate('AddProduct');
+      this.props.navigation.navigate('AddNewProduct');
     }
 
     this._updateMainProductInfo = function (products) {

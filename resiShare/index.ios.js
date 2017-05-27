@@ -15,6 +15,7 @@ import Product from './product.js';
 import Services from './services.js';
 import ProductsList from './productslist.js';
 import AddProduct from './addProduct.js';
+import AddProductV2 from './addNewProduct_v2.js'
 import {StackNavigator} from 'react-navigation';
 
 const routes = [
@@ -40,6 +41,9 @@ const stackNavigatorRoutes = {
   },
   AddProduct : {
     screen : AddProduct
+  },
+  AddNewProduct : {
+    screen : AddProductV2
   }
 };
 

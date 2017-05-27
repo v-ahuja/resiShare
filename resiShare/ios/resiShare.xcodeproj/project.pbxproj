@@ -655,6 +655,7 @@
 				BDAF4CB91E6B66CA0070138B /* Embed Frameworks */,
 				4D2D9F0766932346C3020468 /* [CP] Embed Pods Frameworks */,
 				C96D23B7780777F9B5B5CB8B /* [CP] Copy Pods Resources */,
+				BD1E07631ED9F9E600350428 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1197,6 +1198,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-resiShare-tvOS/Pods-resiShare-tvOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		BD1E07631ED9F9E600350428 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" ce4697e8a57447090679f47ceaa17c75597cb442 783edd060064828692183358d1bf83fbd8d1c59bba474d051248843b6610304c";
 		};
 		C24241EC30B6466996C6FF01 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
