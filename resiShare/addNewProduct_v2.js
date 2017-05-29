@@ -18,44 +18,21 @@ import {
 // import Divider from './divider.js';
 // import ImageList from './multiImageView.js'
 // import ImagePicker from 'react-native-image-crop-picker';
+import AddImage from './addimage.js'
 
 import { NavigationActions } from 'react-navigation';
 
 import * as t from 'tcomb-form-native';
-import * as _ from 'lodash';
 
 var Form = t.form.Form;
 
-const normalStylesheet = _.cloneDeep(Form.stylesheet);
-
-normalStylesheet.textbox.normal.height = 180;
-
-const Condition = t.enums({
-  L : "light",
-  M : "medium",
-  H : "heavy",
-  LN : "like new",
-  U : "unused"
-});
-
 // here we are: define your domain model
 var Product = t.struct({
-  title : t.String,
   price: t.String,              // a required string
-  description: t.String,  // an optional string
-  usage : Condition
+  description: t.String  // an optional string
 });
 
-var options = {
-  fields : {
-    description : {
-      multiline : true,
-      numberOfLines : 50,
-      stylesheet : normalStylesheet
-    }
-  }
-
-};
+var options = {};
 
 var styles = StyleSheet.create({
   container: {
@@ -114,6 +91,7 @@ export default class AddProductV2 extends Component {
               type={Product}
               options={options}
             />
+            <AddImage />
             <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
               <Text style={styles.buttonText}>Save</Text>
             </TouchableHighlight>
