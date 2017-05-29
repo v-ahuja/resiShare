@@ -22,16 +22,40 @@ import {
 import { NavigationActions } from 'react-navigation';
 
 import * as t from 'tcomb-form-native';
+import * as _ from 'lodash';
 
 var Form = t.form.Form;
 
-// here we are: define your domain model
-var Product = t.struct({
-  price: t.String,              // a required string
-  description: t.String  // an optional string
+const normalStylesheet = _.cloneDeep(Form.stylesheet);
+
+normalStylesheet.textbox.normal.height = 180;
+
+const Condition = t.enums({
+  L : "light",
+  M : "medium",
+  H : "heavy",
+  LN : "like new",
+  U : "unused"
 });
 
-var options = {};
+// here we are: define your domain model
+var Product = t.struct({
+  title : t.String,
+  price: t.String,              // a required string
+  description: t.String,  // an optional string
+  usage : Condition
+});
+
+var options = {
+  fields : {
+    description : {
+      multiline : true,
+      numberOfLines : 50,
+      stylesheet : normalStylesheet
+    }
+  }
+
+};
 
 var styles = StyleSheet.create({
   container: {
