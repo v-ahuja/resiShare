@@ -5,7 +5,8 @@ import {
   View,
   Alert,
   Button,
-  Modal
+  Modal,
+  Dimensions
 } from 'react-native';
 
 import Divider from './divider.js';
@@ -21,9 +22,12 @@ class ModalDelegate extends Component {
   }
 
   render() {
+    var {height, width} = Dimensions.get('window');
+    const midscreen = height/2;
     return (
-        <Modal transparent={false} visible = {this.props.visible}>
-          <View style={{marginTop: 122}}>
+
+        <Modal transparent={true} visible = {this.props.visible}>
+          <View style={{marginTop: 122, backgroundColor: '#f5fcff'}}>
             <Button
               title="Add Image from roll"
               onPress={this.selectFromRoll}
@@ -34,6 +38,7 @@ class ModalDelegate extends Component {
             />
           </View>
         </Modal>
+
     );
   }
 }
@@ -46,20 +51,35 @@ export default class AddImages extends Component {
     };
   }
 
-  onPressHandler(){
+  addImageFromRoll = () => {
     // Alert.alert("Add Image pressed!");
-    this.setState({
-      modalVisible : true
+    ImagePicker.openPicker({
+      multiple: true
+    }).then(images => {
+      console.log(images);
+    });
+  }
+
+  addImageFromCamera = () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true
+    }).then(image => {
+      console.log(image);
     });
   }
 
   render () {
     return (
       <View style = {{flex : 1}}>
-        <ModalDelegate visible={this.state.modalVisible} />
         <Button
-          title="Add Image"
-          onPress={this.onPressHandler.bind(this)}
+          title="Add Image from Roll"
+          onPress={this.addImageFromRoll}
+        />
+        <Button
+          title="Add Image from Camera"
+          onPress={this.addImageFromCamera}
         />
       </View>
     );

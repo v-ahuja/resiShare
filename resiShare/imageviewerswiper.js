@@ -80,27 +80,7 @@ export default class ImageViewerSwiper extends Component {
                 source={{uri : imgURI}} />
             </View> )
           }
-          {/*[
-          <View style={ImageStyles.slide}>
-            <Image resizeMode='cover' style={ImageStyles.image}
-              source={require('./images/beats_1.jpg')} />
-          </View>,
-          <View style={ImageStyles.slide}>
-            <Image resizeMode='cover' style={ImageStyles.image}
-              source={require('./images/beats_2.jpg')} />
-          </View>,
-          <View style={ImageStyles.slide}>
-            <Image resizeMode='cover' style={ImageStyles.image}
-              source={require('./images/beats_3.jpg')} />
-          </View>,
-          <View style={ImageStyles.slide}>
-            <Image resizeMode='cover' style={ImageStyles.image}
-              source={require('./images/beats_4.jpg')} />
-          </View>,
-          <View style={ImageStyles.slide}>
-            <Image resizeMode='cover' style={ImageStyles.image}
-              source={require('./images/beats_5.jpg')} />
-          </View> ]*/}
+          
         </Swiper>
       </View>
     );
