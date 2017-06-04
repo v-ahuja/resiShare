@@ -6,7 +6,6 @@ import {
   Image
 } from 'react-native';
 
-import DBAccess from './firestack.js';
 import Swiper from 'react-native-swiper';
 
 const ImageStyles =
@@ -53,9 +52,12 @@ export default class ImageViewerSwiper extends Component {
     };
 
     this.retrieveImage = (imgPath) => {
-        DBAccess.getImageFromPath(imgPath).then(
-          (uri) => this.setState({
-            imageURIs : this.state.imageURIs.concat(uri.url)
+        this.props.retrieveImageCallback(imgPath).then(
+          // (uri) => this.setState({
+          //   imageURIs : this.state.imageURIs.concat(uri.url)
+          // })
+          (url) => this.setState({
+            imageURIs : this.state.imageURIs.concat(url)
           })
         ).catch((err) => consle.log(err));
     };
@@ -63,6 +65,10 @@ export default class ImageViewerSwiper extends Component {
     console.log("imagePaths: ", this.props);
     this.props.imagePaths.forEach(this.retrieveImage);
   }
+
+  updateImages = (url) => this.setState({
+    imageURIs : this.state.imageURIs.concat(url)
+  });
 
   render() {
 
@@ -75,12 +81,15 @@ export default class ImageViewerSwiper extends Component {
           showsButtons = {true}
           >
           {
-            this.state.imageURIs.map((imgURI, i) => <View key={i} style={ImageStyles.slide}>
-              <Image resizeMode='cover' style={ImageStyles.image}
-                source={{uri : imgURI}} />
-            </View> )
+            this.state.imageURIs.map((imgURI, i) => {
+              console.log("imgURI: ", imgURI);
+             return (<View key={i} style={ImageStyles.slide}>
+                <Image resizeMode='cover' style={ImageStyles.image}
+                  source={{uri : imgURI}} />
+              </View> );
+          })
           }
-          
+
         </Swiper>
       </View>
     );

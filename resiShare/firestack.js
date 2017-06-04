@@ -39,7 +39,8 @@ export default class DBAccess {
             (imgKey) => productImageURLs[imgKey]
           );
 
-        console.log("After transforming childSnapshotValue: ", childSnapshotValue);
+        console.log("After transforming childSnapshotValue: ",
+          childSnapshotValue);
 
         products.push(childSnapshotValue);
       });
@@ -56,6 +57,44 @@ export default class DBAccess {
          console.log("Error retrieving from db");
          return [];
        });
+  }
+
+  static updateImages(locality, productName, images, callback) {
+    if (images.length == 0)
+    {
+      return;
+    }
+
+    console.log("images to upload: ", images);
+    console.log("callback: ", callback);
+
+    const imagesPath = `${locality}/products/${productName}/images`;
+
+    uploadedImagesResult = [];
+    images.forEach((image) => {
+      const imageUploadPath = `${imagesPath}/${image.name}`
+      cloudRef.uploadFile(imageUploadPath, image.path, {
+        contentType: 'image/jpeg',
+        contentEncoding: 'base64'
+      })
+      .then((result) => {
+        console.log("Result of uploading a file: ", result);
+        uploadedImagesResult = uploadedImagesResult.concat([{
+          name : result.name,
+          fullPath : result.fullPath
+        }]);
+        console.log("Uploaded Images Result: ", uploadedImagesResult);
+        callback(uploadedImagesResult);
+      })
+      .catch((err) => console.log("error with upload of image: ", err));
+    });
+
+  }
+
+  static updateProducts(locality, product) {
+    const productsPath = `localities/${locality}/products/${product.name}`;
+    const ref = DBAccess.getDBRef(productsPath);
+    ref.set(product);
   }
 
   static getImageFromPath(imgPath) {

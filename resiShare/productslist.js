@@ -115,7 +115,7 @@ export default class ProductsList extends Component {
         console.log("url from storage: ", urlObj);
         this.products = this.products.concat({
           product : product,
-          source : urlObj.url,
+          source : urlObj.url
         });
 
         this.setState({

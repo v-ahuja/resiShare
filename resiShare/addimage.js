@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import Divider from './divider.js';
+import ImageViewerSwiper from './imageviewerswiper.js'
 import ImagePicker from 'react-native-image-crop-picker';
 
 class ModalDelegate extends Component {
@@ -47,8 +48,10 @@ export default class AddImages extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible : false
+      modalVisible : false,
+      images : []
     };
+    this.imageViewSwiper = null;
   }
 
   addImageFromRoll = () => {
@@ -57,6 +60,12 @@ export default class AddImages extends Component {
       multiple: true
     }).then(images => {
       console.log(images);
+      this.setState({
+        images : this.state.images.concat(images)
+      });
+      this.imageViewSwiper.updateImages(images.map(
+        (image) => image.path
+      ));
     });
   }
 
@@ -70,6 +79,10 @@ export default class AddImages extends Component {
     });
   }
 
+  getImagesInfo = () => {
+    return this.state.images;
+  }
+
   render () {
     return (
       <View style = {{flex : 1}}>
@@ -77,10 +90,19 @@ export default class AddImages extends Component {
           title="Add Image from Roll"
           onPress={this.addImageFromRoll}
         />
+        <Divider/>
         <Button
           title="Add Image from Camera"
           onPress={this.addImageFromCamera}
         />
+        <Divider/>
+        <ImageViewerSwiper
+          ref = { (swiper) => this.imageViewSwiper = swiper}
+          imagePaths = {this.state.images}
+          retrieveImageCallback={(image) => new Promise(
+            function(resolve, reject) {
+              resolve(image.path);
+            })} />
       </View>
     );
   }

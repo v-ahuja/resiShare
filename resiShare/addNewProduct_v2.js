@@ -19,6 +19,7 @@ import {
 // import ImageList from './multiImageView.js'
 // import ImagePicker from 'react-native-image-crop-picker';
 import AddImage from './addimage.js'
+import DBAccess from './firestack.js'
 
 import { NavigationActions } from 'react-navigation';
 
@@ -28,8 +29,11 @@ var Form = t.form.Form;
 
 // here we are: define your domain model
 var Product = t.struct({
-  price: t.String,              // a required string
-  description: t.String  // an optional string
+  name : t.String,
+  price: t.String,
+  description: t.String,  // an optional string
+  condition: t.String,    // a required string
+
 });
 
 var options = {};
@@ -73,7 +77,64 @@ export default class AddProductV2 extends Component {
     ),
   });
 
-  onPress = () => Alert.alert("button pressed");
+  onPress = () => {
+    /**
+    * Collect info
+    */
+    Alert.alert("button pressed");
+
+    const productForm = this.productForm.getValue();
+    const imagesInfo = this.addImageComponent.getImagesInfo();
+
+    console.log("product form:", productForm);
+    console.log("image info: ", imagesInfo);
+
+
+
+    let product = {
+      name : productForm.name,
+      price : productForm.price,
+      description : productForm.description,
+      condiion : productForm.condition
+    };
+    product.bestOffer = true;
+    product.currency = '$';
+    product.views = '0';
+
+    const images = imagesInfo.map((imageInfo, index) => {
+
+      return {
+        name : `image_${index}`,
+        path : imageInfo.path
+      };
+    });
+
+    const imageUpload = (uploadedImagesResult) => {
+      console.log("images from upload: ", uploadedImagesResult);
+      if (product.mainDisplayURL === undefined &&
+          uploadedImagesResult.length > 0) {
+        console.log("product to update1: ", product);
+        product.mainDisplayURL = uploadedImagesResult[0].fullPath;
+        console.log("product to update2: ", product);
+      }
+
+      if (product.productImageURLs === undefined){
+        product.productImageURLs = {};
+      }
+      console.log("product to update3: ", product);
+
+      uploadedImagesResult.forEach((image) => {
+        console.log("product to update4: ", product);
+        product.productImageURLs[image.name] = image.fullPath;
+      });
+
+      console.log("product to update5: ", product);
+      DBAccess.updateProducts("123", product);
+    };
+
+    DBAccess.updateImages("333E54ST",
+      product.name, images, imageUpload);
+  }
 
   render() {
     return (
@@ -87,11 +148,11 @@ export default class AddProductV2 extends Component {
           <View style={styles.container}>
             {/* display */}
             <Form
-              ref="form"
+              ref = { (form) => this.productForm = form}
               type={Product}
               options={options}
             />
-            <AddImage />
+            <AddImage ref = {(addImageComponent) => this.addImageComponent = addImageComponent}/>
             <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
               <Text style={styles.buttonText}>Save</Text>
             </TouchableHighlight>

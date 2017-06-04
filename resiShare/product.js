@@ -13,6 +13,7 @@ import PriceView from './priceView.js'
 import OfferButton from './offerButton.js'
 import Description from './description.js'
 import ImageViewerSwiper from './imageviewerswiper.js'
+import DBAccess from './firestack.js';
 
 export default class Product extends Component {
   render() {
@@ -25,7 +26,12 @@ export default class Product extends Component {
         <Divider />
         <Header text = {navigationParams.name} />
 
-        <ImageViewerSwiper imagePaths = {navigationParams.productImageURLs} />
+        <ImageViewerSwiper imagePaths = {navigationParams.productImageURLs}
+            retrieveImageCallback = {
+              (imgPath) => DBAccess.getImageFromPath(imgPath)
+                .then((uri) => uri.url)
+                .catch(() => "")
+            }/>
 
         <PopularityComponent views = {navigationParams.views}/>
 
