@@ -91,6 +91,21 @@ export default class DBAccess {
 
   }
 
+  static updateImagesInStorage(images)
+  {
+    images.forEach((image) => {
+      cloudRef.uploadFile(imageUploadPath, image.path, {
+        contentType: 'image/jpeg',
+        contentEncoding: 'base64'
+      })
+    });
+  }
+
+  static deleteNode(path)
+  {
+    
+  }
+
   static updateProducts(locality, product) {
     const productsPath = `localities/${locality}/products/${product.name}`;
     const ref = DBAccess.getDBRef(productsPath);

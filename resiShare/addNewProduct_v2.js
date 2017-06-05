@@ -67,6 +67,120 @@ var styles = StyleSheet.create({
   }
 });
 
+class DBHelper
+{
+  static transformImagesInfo(product, locality, imagesInfo)
+  {
+    return imagesInfo.map((imageInfo, index) => {
+      const imageName = `image_${index}`;
+      return {
+        name : imageName,
+        image : imageInfo,
+        firebaseStoragePath :
+          `${locality}/products/${product.name}/images/${imageName}`
+      };
+    });
+  }
+
+  static appendFirebaseStorageURLPaths(product, images)
+  {
+    /**
+    * @brief Add url paths for all the images the user has supplied for the
+    * product. These url paths represent the path of the image, which is stored
+    * in firebase storage. The reason for this is that the core product Info
+    * (such as name, description, etc.) is stored in a different location from
+    * the one used to store larger data such as images.
+    *
+    * @param product The product to be uploaded to the database.
+    * @param images The array of image objects which provide the local path of
+    * the asset as well.
+    */
+
+    product.mainDisplayURL = images[0].firebaseStoragePath;
+    product.productImageURLs = {};
+    images.forEach((image) => product.productImageURLs[image.name] =
+      image.firebaseStoragePath);
+
+    console.log("Product after enriching it with firebase ",
+      "specific image info: ", product);
+  }
+
+  static getProductToUpload(productForm, imagesInfo)
+  {
+    /**
+    * @brief Given the current images (either from the camera or the roll) and
+    * the details of the product entered by the user in the form, we're
+    * going to create a "product" object, which can be saved to disk.
+    *
+    * @param productForm An immutable form object with product details such as
+    * name, description, etc.
+    * @param imagesInfo An array of local image asset objects. The path and
+    * content type will be extracted from them.
+    *
+    * @return A json product object which can be uploaded to remote storage.
+    */
+
+    // Grab details from the immutable form object.
+    const product = {
+      name : productForm.name,
+      price : productForm.price,
+      description : productForm.description,
+      condiion : productForm.condition
+    };
+
+    // Currently harcoding these. TODO: Make them part of the form so that the
+    // user can enter them.
+    product.bestOffer = true;
+    product.currency = '$';
+    product.views = '0';
+
+    // If the user has made any images availabe, for now, we pick the first one
+    // to be the "mainDisplayURL". This will be the main image used to represent
+    // the product and used in thumb-nails etc.
+    if (imagesInfo.length > 0)
+    {
+      const images = transformImagesInfo(product, "333E54ST", imagesInfo);
+      appendFirebaseStorageURLPaths(product, images);
+    }
+
+    return product;
+  }
+
+  static uploadProductFromForm(productForm, imagesInfo)
+  {
+    /**
+    * The sequence of operations is as follows
+    */
+    const product = getProductToUpload(productForm, imagesInfo);
+
+    // First we update the real-time firebase db with the product info.
+    DBAccess.updateProducts("123", product);
+
+    const imageUpload = (uploadedImagesResult) => {
+      console.log("images from upload: ", uploadedImagesResult);
+      if (product.mainDisplayURL === undefined &&
+          uploadedImagesResult.length > 0) {
+        product.mainDisplayURL = uploadedImagesResult[0].fullPath;
+        console.log("product to update2: ", product);
+      }
+
+      if (product.productImageURLs === undefined){
+        product.productImageURLs = {};
+      }
+
+      uploadedImagesResult.forEach((image) => {
+        product.productImageURLs[image.name] = image.fullPath;
+      });
+
+      console.log("product to update5: ", product);
+      DBAccess.updateProducts("123", product);
+    };
+
+    DBAccess.updateImages("333E54ST",
+      product.name, images, imageUpload);
+  }
+}
+
 export default class AddProductV2 extends Component {
   static navigationOptions = ({ navigation, screenProps }) => ({
     headerRight: (
@@ -89,9 +203,7 @@ export default class AddProductV2 extends Component {
     console.log("product form:", productForm);
     console.log("image info: ", imagesInfo);
 
-
-
-    let product = {
+    const product = {
       name : productForm.name,
       price : productForm.price,
       description : productForm.description,
@@ -113,7 +225,6 @@ export default class AddProductV2 extends Component {
       console.log("images from upload: ", uploadedImagesResult);
       if (product.mainDisplayURL === undefined &&
           uploadedImagesResult.length > 0) {
-        console.log("product to update1: ", product);
         product.mainDisplayURL = uploadedImagesResult[0].fullPath;
         console.log("product to update2: ", product);
       }
@@ -121,10 +232,8 @@ export default class AddProductV2 extends Component {
       if (product.productImageURLs === undefined){
         product.productImageURLs = {};
       }
-      console.log("product to update3: ", product);
 
       uploadedImagesResult.forEach((image) => {
-        console.log("product to update4: ", product);
         product.productImageURLs[image.name] = image.fullPath;
       });
 
