@@ -125,7 +125,7 @@ export default class ProductsList extends Component {
 
       products.forEach(product => {
           console.log("product from db: ", product);
-          const storageRef = DBAccess.getCloudRef(product.mainDisplayURL);
+          const storageRef = DBAccess.getCloudRef(product.mainDisplayPath);
           storageRef.downloadUrl()
                     .then(updateState.bind(this, product))
                     .catch((error) => console.error("Error getting downloadUrl: ", error));
@@ -184,6 +184,8 @@ export default class ProductsList extends Component {
                      productInfo = {rowData.product}
                      navigation={this.props.navigation}/> )}
       />
+
+      <Divider />
       </View>
     );
   };

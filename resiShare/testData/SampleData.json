@@ -12,8 +12,8 @@
         "beats" : {
           "name" : "Beats XLX 50 Red",
           "description" : "Quiet Comfort 35 wireless headphones are engineered with world-class noise cancellation that makes quiet sound quieter. Free yourself from wires and connect easily to your devices with Bluetooth and NFC pairing. Volume-optimized EQ gives you balanced audio performance at any volume, while a noise-rejecting dual microphone provides clear calls, even in windy or noisy environments. Voice prompts and intuitive controls make communicating and controlling your music hassle-free. A lithium-ion battery gives you up to 20 hours of wireless play time per charge. And if you anticipate a situation where charging may not be possible, just plug in the included audio cable. Wired mode gives you up to 40 hours of play time per charge. Premium materials make these headphones lightweight and comfortable for all-day listening. Use the Bose Connect app for a more personalized experience. Included: Quiet Comfort 35 wireless headphones; USB charging cable; backup audio cable; airline adapter; carry case.",
-          "mainDisplayURL" : "333E54ST/products/beats/images/beats_1.jpg",
-          "productImageURLs" : {
+          "mainDisplayPath" : "333E54ST/products/beats/images/beats_1.jpg",
+          "productImagePaths" : {
             "beats_1" : "333E54ST/products/beats/images/beats_1.jpg",
             "beats_2" : "333E54ST/products/beats/images/beats_2.jpg",
             "beats_3" : "333E54ST/products/beats/images/beats_3.jpg",
@@ -29,8 +29,8 @@
         "MTM" : {
           "name" : "MTM Survivor Dry Box with O-Ring Seal, Small",
           "description" : "Dry storage for all outdoor enthusiasts;Sized for backpacks and gear bags Rugged construction; Designed for extreme conditions; Ideal geocaching container Lanyard and shoulder strap-capable; Padlock tabbed; Built-in compass and signaling mirror Water Resistant: Triple latch with O-ring seal; Two color choices: Forest Green and Orange SMALL Dimensions: 9.75” x 7.75” x 2.8”; LARGE Dimensions: 9.75” x 7.75” x 4.75”; Made in USA",
-          "mainDisplayURL" : "333E54ST/products/MTM/images/MTM_1.jpg",
-          "productImageURLs" : {
+          "mainDisplayPath" : "333E54ST/products/MTM/images/MTM_1.jpg",
+          "productImagePaths" : {
             "MTM_1" : "333E54ST/products/MTM/images/MTM_1.jpg",
             "MTM_2" : "333E54ST/products/MTM/images/mtm_2.jpg",
             "MTM_3" : "333E54ST/products/MTM/images/mtm_3.jpg",

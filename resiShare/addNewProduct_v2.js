@@ -69,7 +69,7 @@ var styles = StyleSheet.create({
 
 class DBHelper
 {
-  static transformImagesInfo(product, locality, imagesInfo)
+  static transformImagesInfo(productName, locality, imagesInfo)
   {
     return imagesInfo.map((imageInfo, index) => {
       const imageName = `image_${index}`;
@@ -77,12 +77,12 @@ class DBHelper
         name : imageName,
         image : imageInfo,
         firebaseStoragePath :
-          `${locality}/products/${product.name}/images/${imageName}`
+          `${locality}/products/${productName}/images/${imageName}`
       };
     });
   }
 
-  static appendFirebaseStorageURLPaths(product, images)
+  static appendFirebaseStoragePaths(product, images)
   {
     /**
     * @brief Add url paths for all the images the user has supplied for the
@@ -96,16 +96,16 @@ class DBHelper
     * the asset as well.
     */
 
-    product.mainDisplayURL = images[0].firebaseStoragePath;
-    product.productImageURLs = {};
-    images.forEach((image) => product.productImageURLs[image.name] =
+    product.mainDisplayPath = images[0].firebaseStoragePath;
+    product.productImagePaths = {};
+    images.forEach((image) => product.productImagePaths[image.name] =
       image.firebaseStoragePath);
 
     console.log("Product after enriching it with firebase ",
       "specific image info: ", product);
   }
 
-  static getProductToUpload(productForm, imagesInfo)
+  static getProductToUpload(productForm, images)
   {
     /**
     * @brief Given the current images (either from the camera or the roll) and
@@ -135,12 +135,11 @@ class DBHelper
     product.views = '0';
 
     // If the user has made any images availabe, for now, we pick the first one
-    // to be the "mainDisplayURL". This will be the main image used to represent
+    // to be the "mainDisplayPath". This will be the main image used to represent
     // the product and used in thumb-nails etc.
-    if (imagesInfo.length > 0)
+    if (images.length > 0)
     {
-      const images = transformImagesInfo(product, "333E54ST", imagesInfo);
-      appendFirebaseStorageURLPaths(product, images);
+      DBHelper.appendFirebaseStoragePaths(product, images);
     }
 
     return product;
@@ -148,38 +147,20 @@ class DBHelper
 
   static uploadProductFromForm(productForm, imagesInfo)
   {
+    const images = DBHelper.transformImagesInfo(productForm.name, "333E54ST", imagesInfo);
     /**
     * The sequence of operations is as follows
     */
-    const product = getProductToUpload(productForm, imagesInfo);
+    const product = DBHelper.getProductToUpload(productForm, images);
 
     // First we update the real-time firebase db with the product info.
     DBAccess.updateProducts("123", product);
 
-    const imageUpload = (uploadedImagesResult) => {
-      console.log("images from upload: ", uploadedImagesResult);
-      if (product.mainDisplayURL === undefined &&
-          uploadedImagesResult.length > 0) {
-        product.mainDisplayURL = uploadedImagesResult[0].fullPath;
-        console.log("product to update2: ", product);
-      }
-
-      if (product.productImageURLs === undefined){
-        product.productImageURLs = {};
-      }
-
-      uploadedImagesResult.forEach((image) => {
-        product.productImageURLs[image.name] = image.fullPath;
-      });
-
-      console.log("product to update5: ", product);
-      DBAccess.updateProducts("123", product);
-    };
-
-    DBAccess.updateImages("333E54ST",
-      product.name, images, imageUpload);
+    images.forEach(image => DBAccess.uploadImage(image.image,
+                                                 image.firebaseStoragePath));
   }
-}
+
+} // end of class
 
 export default class AddProductV2 extends Component {
   static navigationOptions = ({ navigation, screenProps }) => ({
@@ -223,18 +204,18 @@ export default class AddProductV2 extends Component {
 
     const imageUpload = (uploadedImagesResult) => {
       console.log("images from upload: ", uploadedImagesResult);
-      if (product.mainDisplayURL === undefined &&
+      if (product.mainDisplayPath === undefined &&
           uploadedImagesResult.length > 0) {
-        product.mainDisplayURL = uploadedImagesResult[0].fullPath;
+        product.mainDisplayPath = uploadedImagesResult[0].fullPath;
         console.log("product to update2: ", product);
       }
 
-      if (product.productImageURLs === undefined){
-        product.productImageURLs = {};
+      if (product.productImagePaths === undefined){
+        product.productImagePaths = {};
       }
 
       uploadedImagesResult.forEach((image) => {
-        product.productImageURLs[image.name] = image.fullPath;
+        product.productImagePaths[image.name] = image.fullPath;
       });
 
       console.log("product to update5: ", product);
@@ -243,6 +224,13 @@ export default class AddProductV2 extends Component {
 
     DBAccess.updateImages("333E54ST",
       product.name, images, imageUpload);
+  }
+
+  onPressNew = () => {
+    const productForm = this.productForm.getValue();
+    const imagesInfo = this.addImageComponent.getImagesInfo();
+
+    DBHelper.uploadProductFromForm(productForm, imagesInfo);
   }
 
   render() {
@@ -262,7 +250,7 @@ export default class AddProductV2 extends Component {
               options={options}
             />
             <AddImage ref = {(addImageComponent) => this.addImageComponent = addImageComponent}/>
-            <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+            <TouchableHighlight style={styles.button} onPress={this.onPressNew} underlayColor='#99d9f4'>
               <Text style={styles.buttonText}>Save</Text>
             </TouchableHighlight>
           </View>

@@ -26,7 +26,7 @@ export default class Product extends Component {
         <Divider />
         <Header text = {navigationParams.name} />
 
-        <ImageViewerSwiper imagePaths = {navigationParams.productImageURLs}
+        <ImageViewerSwiper imagePaths = {navigationParams.productImagePaths}
             retrieveImageCallback = {
               (imgPath) => DBAccess.getImageFromPath(imgPath)
                 .then((uri) => uri.url)

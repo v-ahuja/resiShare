@@ -30,13 +30,13 @@ export default class DBAccess {
 
         let childSnapshotValue = childSnapshot.value;
 
-        const productImageURLs = childSnapshotValue.productImageURLs;
+        const productImagePaths = childSnapshotValue.productImagePaths;
 
-        console.log("productImageURLs: ", productImageURLs);
+        console.log("productImagePaths: ", productImagePaths);
 
-        childSnapshotValue.productImageURLs =
-          Object.keys(productImageURLs).map(
-            (imgKey) => productImageURLs[imgKey]
+        childSnapshotValue.productImagePaths =
+          Object.keys(productImagePaths).map(
+            (imgKey) => productImagePaths[imgKey]
           );
 
         console.log("After transforming childSnapshotValue: ",
@@ -101,9 +101,19 @@ export default class DBAccess {
     });
   }
 
-  static deleteNode(path)
+  static uploadImage(image, imagePath)
   {
-    
+    console.log("image: ", image, " imagePath:", imagePath);
+    cloudRef.uploadFile(imagePath, image.path, {
+      contentType: 'image/jpeg',
+      contentEncoding: 'base64'
+    })
+    .catch((error) => console.log("Error uploading image: ", error));
+  }
+
+  static deleteImageNode(path)
+  {
+
   }
 
   static updateProducts(locality, product) {
