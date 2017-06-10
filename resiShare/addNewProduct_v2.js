@@ -125,7 +125,7 @@ class DBHelper
       name : productForm.name,
       price : productForm.price,
       description : productForm.description,
-      condiion : productForm.condition
+      condition : productForm.condition
     };
 
     // Currently harcoding these. TODO: Make them part of the form so that the
@@ -188,7 +188,7 @@ export default class AddProductV2 extends Component {
       name : productForm.name,
       price : productForm.price,
       description : productForm.description,
-      condiion : productForm.condition
+      condition : productForm.condition
     };
     product.bestOffer = true;
     product.currency = '$';
