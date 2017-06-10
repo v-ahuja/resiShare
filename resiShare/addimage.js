@@ -54,19 +54,22 @@ export default class AddImages extends Component {
     this.imageViewSwiper = null;
   }
 
+  updateImages = (images) =>
+  {
+    console.log(images);
+    this.setState({
+      images : this.state.images.concat(images)
+    });
+    this.imageViewSwiper.updateImages(images.map(
+      (image) => image.path
+    ));
+  }
+
   addImageFromRoll = () => {
     // Alert.alert("Add Image pressed!");
     ImagePicker.openPicker({
       multiple: true
-    }).then(images => {
-      console.log(images);
-      this.setState({
-        images : this.state.images.concat(images)
-      });
-      this.imageViewSwiper.updateImages(images.map(
-        (image) => image.path
-      ));
-    });
+    }).then(images => this.updateImages(images));
   }
 
   addImageFromCamera = () => {
@@ -74,9 +77,7 @@ export default class AddImages extends Component {
       width: 300,
       height: 400,
       cropping: true
-    }).then(image => {
-      console.log(image);
-    });
+    }).then(image => this.updateImages([image]));
   }
 
   getImagesInfo = () => {
